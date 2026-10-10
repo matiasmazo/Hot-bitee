@@ -430,17 +430,19 @@ p {
 
 .flavor-grid {
   display: grid;
-  grid-template-columns: 1fr;
-  align-items: start;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
   gap: 28px;
-  width: min(760px, 100%);
+  width: min(1100px, 100%);
   margin: 0 auto;
 }
 
 .catalog-card {
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
   border: 1px solid #552020;
-  border-radius: 20px;
+  border-radius: 22px;
   background: linear-gradient(155deg, #1c1212, #0b0909 70%);
   box-shadow: 0 14px 36px #00000045, inset 0 1px #ffffff08;
   transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
@@ -461,35 +463,8 @@ p {
   padding: 0;
 }
 
-.classic-hero {
-  padding: 18px 18px 0;
-}
-
-.classic-hero img {
-  display: block;
-  width: 100%;
-  aspect-ratio: 1.1;
-  border: 1px solid #552020;
-  border-radius: 16px;
-  background: #050505;
-  object-fit: cover;
-}
-
-.classic-gallery {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
-  padding: 12px 18px 0;
-}
-
-.classic-gallery img {
-  display: block;
-  width: 100%;
-  aspect-ratio: 1;
-  border: 1px solid #552020;
-  border-radius: 14px;
-  background: #050505;
-  object-fit: cover;
+.card-header {
+  padding: 22px 22px 8px;
 }
 
 .catalog-card > img {
@@ -502,14 +477,14 @@ p {
 }
 
 .catalog-carousel {
-  padding: 16px 18px 0;
+  padding: 0 18px;
 }
 
 .carousel-track {
   display: flex;
   min-width: 0;
   overflow-x: auto;
-  border-radius: 14px;
+  border-radius: 18px;
   scrollbar-width: none;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
@@ -523,11 +498,11 @@ p {
   flex: 0 0 100%;
   display: block;
   width: 100%;
-  aspect-ratio: 0.7;
+  aspect-ratio: 1.02;
   border: 1px solid #552020;
-  border-radius: 14px;
+  border-radius: 16px;
   background: #050505;
-  object-fit: contain;
+  object-fit: cover;
   scroll-snap-align: start;
   box-shadow: 0 10px 28px #00000045;
 }
@@ -538,7 +513,7 @@ p {
   justify-content: center;
   gap: 16px;
   width: fit-content;
-  margin: 12px auto 0;
+  margin: 16px auto 0;
   padding: 5px 8px;
   border: 1px solid #552323;
   border-radius: 999px;
@@ -579,7 +554,11 @@ p {
 }
 
 .catalog-copy {
-  padding: 21px 22px 25px;
+  padding: 0 22px 24px;
+}
+
+.catalog-copy > p:last-child {
+  margin: 0;
 }
 
 .flavor-number {
