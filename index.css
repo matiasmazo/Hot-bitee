@@ -430,11 +430,28 @@ p {
 
 .flavor-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   align-items: stretch;
   gap: 20px;
-  width: min(1160px, 100%);
+  width: min(940px, 100%);
   margin: 0 auto;
+}
+
+.catalog-card:first-child {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  width: min(100%, 360px);
+  justify-self: center;
+}
+
+.catalog-card:nth-child(2) {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.catalog-card:last-child {
+  grid-column: 2;
+  grid-row: 1;
 }
 
 .catalog-card {
@@ -811,6 +828,15 @@ p {
     gap: 20px;
   }
 
+  .catalog-card:first-child,
+  .catalog-card:nth-child(2),
+  .catalog-card:last-child {
+    grid-column: 1;
+    grid-row: auto;
+    width: auto;
+    justify-self: stretch;
+  }
+
   .contact-section {
     padding: 64px 20px;
   }
@@ -823,36 +849,6 @@ p {
 
   .contact-card {
     min-height: 140px;
-  }
-}
-
-@media (min-width: 761px) and (max-width: 1000px) {
-  .flavor-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    width: min(760px, 100%);
-    gap: 20px;
-  }
-
-  .catalog-card:first-child {
-    grid-column: 1 / -1;
-    grid-row: 2;
-    width: min(100%, 360px);
-    justify-self: center;
-  }
-
-  .catalog-card:nth-child(2),
-  .catalog-card:last-child {
-    grid-row: 1;
-  }
-
-  .catalog-card:nth-child(2) {
-    grid-column: 1;
-  }
-
-  .catalog-card:last-child {
-    grid-column: 2;
-    width: auto;
-    justify-self: stretch;
   }
 }
 
