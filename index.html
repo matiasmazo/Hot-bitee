@@ -89,6 +89,14 @@
         </article>
         <article class="catalog-card">
           <img src="clasica.jpeg" alt="Línea clásica Hot Bite: GomiLove, GomiHot y GomiBoom." loading="lazy" decoding="async">
+          <div class="catalog-carousel" data-series="clásica" aria-label="Fotos de la línea clásica">
+            <img class="carousel-slide" src="clasica1.jpeg" alt="Clásica 1: gomitas y fruta enchiladas Hot Bite." loading="lazy" decoding="async">
+            <div class="carousel-controls">
+              <button class="carousel-arrow" type="button" data-direction="-1" aria-label="Ver foto clásica anterior">←</button>
+              <span class="carousel-slide-label" aria-live="polite">Clásica 1</span>
+              <button class="carousel-arrow" type="button" data-direction="1" aria-label="Ver foto clásica siguiente">→</button>
+            </div>
+          </div>
           <div class="catalog-copy">
             <p class="flavor-number">CATÁLOGO 01 · CLÁSICO</p>
             <h3>Línea clásica</h3>
@@ -97,6 +105,14 @@
         </article>
         <article class="catalog-card">
           <img src="Premium.jpeg" alt="Imagen de la marca Hot Bite: no pica, domina." loading="lazy" decoding="async">
+          <div class="catalog-carousel" data-series="premium" aria-label="Fotos de la línea premium">
+            <img class="carousel-slide" src="premium1.jpeg" alt="Premium 1: gomitas enchiladas Hot Bite." loading="lazy" decoding="async">
+            <div class="carousel-controls">
+              <button class="carousel-arrow" type="button" data-direction="-1" aria-label="Ver foto premium anterior">←</button>
+              <span class="carousel-slide-label" aria-live="polite">Premium 1</span>
+              <button class="carousel-arrow" type="button" data-direction="1" aria-label="Ver foto premium siguiente">→</button>
+            </div>
+          </div>
           <div class="catalog-copy">
             <p class="flavor-number">CATÁLOGO 02 · PREMIUM</p>
             <h3>Línea premium</h3>
@@ -189,6 +205,42 @@
         }
       });
     }
+
+    const carouselSlides = {
+      'clásica': [
+        { src: 'clasica1.jpeg', label: 'Clásica 1', alt: 'Clásica 1: gomitas y fruta enchiladas Hot Bite.' },
+        { src: 'Clasica2.jpeg', label: 'Clásica 2', alt: 'Clásica 2: gomitas enchiladas Hot Bite.' },
+        { src: 'clasica%203.jpeg', label: 'Clásica 3', alt: 'Clásica 3: gomitas y fruta enchiladas Hot Bite.' }
+      ],
+      premium: [
+        { src: 'premium1.jpeg', label: 'Premium 1', alt: 'Premium 1: gomitas enchiladas Hot Bite.' },
+        { src: 'premium%202.jpeg', label: 'Premium 2', alt: 'Premium 2: gomitas enchiladas Hot Bite.' },
+        { src: 'premium%203.jpeg', label: 'Premium 3', alt: 'Premium 3: gomitas enchiladas Hot Bite.' }
+      ]
+    };
+
+    document.querySelectorAll('.catalog-carousel').forEach((carousel) => {
+      const series = carousel.dataset.series;
+      const slides = carouselSlides[series];
+      const image = carousel.querySelector('.carousel-slide');
+      const label = carousel.querySelector('.carousel-slide-label');
+      let currentSlide = 0;
+
+      if (!slides || !image || !label) {
+        return;
+      }
+
+      carousel.querySelectorAll('.carousel-arrow').forEach((button) => {
+        button.addEventListener('click', () => {
+          const direction = Number(button.dataset.direction);
+          currentSlide = (currentSlide + direction + slides.length) % slides.length;
+          const slide = slides[currentSlide];
+          image.src = slide.src;
+          image.alt = slide.alt;
+          label.textContent = slide.label;
+        });
+      });
+    });
   </script>
 </body>
 </html>
