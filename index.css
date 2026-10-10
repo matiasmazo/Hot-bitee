@@ -451,6 +451,61 @@ p {
   object-fit: contain;
 }
 
+.catalog-carousel {
+  padding: 16px 18px 0;
+}
+
+.carousel-slide {
+  display: block;
+  width: 100%;
+  aspect-ratio: 0.7;
+  border: 1px solid #492020;
+  border-radius: 12px;
+  background: #050505;
+  object-fit: contain;
+}
+
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 12px 0 0;
+}
+
+.carousel-slide-label {
+  min-width: 82px;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.carousel-arrow {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border: 1px solid #a82b2b;
+  border-radius: 50%;
+  background: #1b1010;
+  color: var(--ink);
+  cursor: pointer;
+  font: inherit;
+  font-size: 18px;
+  transition: background 180ms ease, transform 180ms ease;
+}
+
+.carousel-arrow:hover {
+  background: #a82b2b;
+  transform: scale(1.08);
+}
+
+.carousel-arrow:focus-visible {
+  outline: 2px solid #ff746b;
+  outline-offset: 3px;
+}
+
 .catalog-copy {
   padding: 21px 22px 23px;
 }
